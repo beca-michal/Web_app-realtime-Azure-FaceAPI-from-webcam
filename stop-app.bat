@@ -1,0 +1,1 @@
+docker stop face_api_z2

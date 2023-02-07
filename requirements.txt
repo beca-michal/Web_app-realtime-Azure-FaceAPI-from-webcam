@@ -1,0 +1,9 @@
+Flask
+mysql-connector-python
+azure-cognitiveservices-vision-face
+azure-cognitiveservices-vision-computervision
+azure-cognitiveservices-vision-customvision
+pillow
+pandas
+opencv-python-headless
+glob2

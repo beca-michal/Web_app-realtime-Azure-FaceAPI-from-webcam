@@ -1,0 +1,35 @@
+#loading {
+    display:none;
+    color:chartreuse;
+}
+
+.hlava {
+    background-color: #333;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.telo {
+    background-color: azure;
+}
+
+table {
+    font-family: arial, sans-serif;
+    width: 40%;
+    overflow-wrap: normal;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    /* padding: 1px; */
+    padding: 0.2rem;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

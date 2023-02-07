@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    container_name: face_api_z2
+    labels:
+      project: "zadanie2"
+      day: "21_4_2022"
+    restart: unless-stopped
+    environment:
+      FLASK_DEBUG: 1
+    volumes:
+      - .:/app
+    #privilages: true
+    #devices:
+    #  - '/dev/video0:/dev/video0'
+    ports:
+      - 5000:5000
+    networks:
+      - zadanie2_network
+networks:
+  zadanie2_network:
+    external: true

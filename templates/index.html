@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/index.css') }}"
+    />
+
+    <title>Live Streaming Demonstration</title>
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+    ></script>
+    <script type="text/javascript">
+      $(function () {
+        $("#photo").click(function (event) {
+          $("#loading").show();
+          $.getJSON("/take_a_photo", {}, function (data) {
+          });
+          return false;
+        });
+      });
+
+      $(function () {
+        $("#show").click(function (event) {
+          $("#loading").show();
+          $.getJSON("/sample", {}, function (data) {
+            $("#loading").hide();
+          });
+          $.get("https://dog.ceo/api/breeds/image/random", function( data ) {
+            $('#dog').attr('src', data.message);
+          });
+          $("#photo_new").content.location.reload(true);
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div>
+              <table class="table table-hover" id="faces">
+                <thead class="hlava">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Face_ID</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Time added</th>
+                  </tr>
+                </thead>
+                <tbody class="telo">
+                  {% for item in data %}
+                  <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.face_id}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.time}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+
+
+          <h3 class="mt-5">Live Streaming</h3>
+          <img src="{{ url_for('video_feed') }}" width="100%" />
+          <button type="button" id="photo">Take photo</button>
+          <button
+            type="button"
+            id="show"
+          >
+            Show me
+          </button>
+          <img
+            id="photo_new"
+            src="{{ url_for('sample') }}"
+            alt="No face detected yet"
+            width="100%"
+          />
+          <img
+            alt="No dog found!"
+            width="100%"
+            id="dog"
+          />
+          <div id="loading">Click show me</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

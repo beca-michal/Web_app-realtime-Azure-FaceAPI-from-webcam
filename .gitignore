@@ -1,0 +1,6 @@
+meme.jpg
+/.idea
+.ebignore
+api_key.json
+/__pycache__
+/db/
